@@ -19,8 +19,29 @@ export class NodeService {
     return this.http.get<Node[]>(this.urlEndPoint);
   }
 
+  listNodesByName(name: String): Observable<Node[]>
+  {
+    return this.http.get<Node[]>(this.urlEndPoint + '/name/?name=' + name);
+  }
+
   createNode(node: NodeDTO): Observable<NodeDTO>
   { 
     return this.http.post<Node>(this.urlEndPoint, node , {headers: this.httpHeaders});
   }
+
+  updateNode(id: number, node: NodeDTO): Observable<NodeDTO>
+  {
+    return this.http.put<Node>(this.urlEndPoint + '/' + id, node , {headers: this.httpHeaders});
+  }
+
+  getNode(id: number): Observable<Node>
+  {
+    return this.http.get<Node>(this.urlEndPoint + '/' + id);
+  }
+
+  deleteNode(id: number): Observable<Node>
+  {
+    return this.http.delete<Node>(this.urlEndPoint + '/' + id);
+  }
+
 }
