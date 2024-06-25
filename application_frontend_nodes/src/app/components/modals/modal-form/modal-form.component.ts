@@ -55,7 +55,11 @@ export class ModalFormComponent implements OnInit {
       response => {
         swal.fire('New node', `${response.name} successfully created!`, 'success');
         this.isVisible = false;
-        this.router.navigate(['/nodes']);
+        setTimeout(() => {
+          this.router.navigate(['/nodes']).then(() => {
+            window.location.reload();
+          });
+        }, 4000);
       }
     );
   }
