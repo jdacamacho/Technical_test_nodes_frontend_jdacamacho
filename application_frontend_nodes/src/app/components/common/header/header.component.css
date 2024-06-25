@@ -1,0 +1,11 @@
+.container-fluid{
+    background-color: #415a77;
+    height: 55px;
+}
+
+.header-text {
+    font-size: 28px; 
+    font-weight: bold;
+    color: #e0e1dd;
+    margin-left: 10px;
+}

@@ -1,0 +1,20 @@
+footer{
+    background-color: #1b263b;
+    text-align: center;
+    position: relative;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+p{
+    color: #dcdcdd;
+}
+
+.title{
+    color: #dcdcdd;
+}
+
+.copyRight {
+    color: #dcdcdd;
+}
