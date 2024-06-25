@@ -1,14 +1,21 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { BreadCrumbComponent } from '../bread-crumb/bread-crumb.component';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { CommonModule } from '@angular/common';
+import { NodesTableComponent } from '../../nodes-table/nodes-table.component';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent],
+  imports: [HeaderComponent, BreadCrumbComponent, FooterComponent,
+            NzTabsModule, NzCardModule,CommonModule,
+            NodesTableComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css'
 })
 export class LayoutComponent {
-
+  indexTab = 0;
 }

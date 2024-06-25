@@ -1,1 +1,21 @@
-<p>nodes-table works!</p>
+<table class="table table-light table-hover">
+    <thead>
+        <tr>
+          <th class="head-table" scope="col">Name</th>
+          <th class="head-table" scope="col">Coordinates</th>
+          <th class="head-table" scope="col">View</th>
+          <th class="head-table" scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let node of nodes ">
+          <td> {{node.name}} </td>
+          <td> {{'( ' + node.coordinate.valueX + ' , ' + node.coordinate.valueY + ' )'}} </td>
+          <td> <span nz-icon nzType="eye" nzTheme="outline"></span> </td>
+          <td>
+            <span nz-icon nzType="edit" nzTheme="outline"></span> | 
+            <span nz-icon nzType="delete" nzTheme="outline"></span>
+          </td>
+        </tr>
+      </tbody>
+</table>

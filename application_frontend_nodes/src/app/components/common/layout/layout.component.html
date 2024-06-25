@@ -1,3 +1,31 @@
 <app-header></app-header>
-<p>layout works!</p>
+
+<app-bread-crumb></app-bread-crumb>
+
+<div class="container">
+    
+    <nz-card class="card-products" style="width: 100%;" nzTitle="CRUD Nodes" [nzExtra]="">
+
+        <button type="button" class="btn btn-outline-primary">Create Node</button>
+        <hr>
+
+        <nz-card-tab>
+            <nz-tabset nzSize="large" [(nzSelectedIndex)]="indexTab">
+            <nz-tab nzTitle="Management" class="title-tab"></nz-tab>
+            <nz-tab nzTitle="Map" class="title-tab"></nz-tab>
+            </nz-tabset>
+        </nz-card-tab>
+
+        <div *ngIf="indexTab === 0">
+            <app-nodes-table></app-nodes-table>
+        </div>
+    
+        <div *ngIf="indexTab === 1">
+            adios
+        </div>
+    </nz-card>
+    
+</div>
+
+
 <app-footer></app-footer>
