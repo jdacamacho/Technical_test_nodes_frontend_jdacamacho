@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import swal from 'sweetalert2';
 import { CoordinateDTO } from '../../../data/DTORequest/coordinate-dto';
+import { catchError, throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-modal-form',
@@ -35,13 +37,27 @@ export class ModalFormComponent implements OnInit {
   }
 
   public createNode(): void {
-    this.nodeService.createNode(this.node).subscribe(
+    this.nodeService.createNode(this.node).pipe(
+      catchError((error: HttpErrorResponse) => {
+        let errorMessage = 'An unexpected error occurred';
+        
+        if (error.error?.message) {
+          errorMessage = error.error.message;
+        } else if (error.message) {
+          errorMessage = error.message;
+        }
+  
+        swal.fire('Error', errorMessage, 'error');
+        
+        return throwError(() => new Error(errorMessage));
+      })
+    ).subscribe(
       response => {
-        swal.fire('New node',`Cliente ${response.name} successfully created!`, 'success');
+        swal.fire('New node', `${response.name} successfully created!`, 'success');
         this.isVisible = false;
         this.router.navigate(['/nodes']);
       }
-    )
+    );
   }
 
   showModal(): void {
