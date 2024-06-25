@@ -1,5 +1,5 @@
 <div *ngIf="nodes?.length==0" class="alert alert-info">
-  No hay registros en la base de datos
+  There are no nodes in database...
 </div>
 
 <table class="table table-light table-hover">
@@ -12,7 +12,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let node of nodes ">
+        <tr *ngFor="let node of currentNodes">
           <td> {{node.name}} </td>
           <td> {{'( ' + node.coordinate.valueX + ' , ' + node.coordinate.valueY + ' )'}} </td>
           <td> <span nz-icon nzType="eye" nzTheme="outline"></span> </td>
@@ -23,3 +23,11 @@
         </tr>
       </tbody>
 </table>
+
+<nz-pagination
+  [nzPageIndex]="currentPage"
+  [nzTotal]="totalItems"
+  [nzPageSize]="pageSize"
+  nzShowQuickJumper
+  (nzPageIndexChange)="onPageChange($event)"
+></nz-pagination>
