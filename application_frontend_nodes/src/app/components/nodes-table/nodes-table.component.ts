@@ -7,6 +7,11 @@ import { NzIconService } from 'ng-zorro-antd/icon';
 import { DeleteOutline, EditOutline } from '@ant-design/icons-angular/icons';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { ModalViewComponent } from '../modals/modal-view/modal-view.component';
+import swal from 'sweetalert2';
+import { catchError, throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-nodes-table',
   standalone: true,
@@ -23,7 +28,9 @@ export class NodesTableComponent implements OnInit {
   pageSize = 5;
   totalItems = 0;
 
-  constructor(private NodeService : NodeService, private iconService: NzIconService){
+  constructor(private NodeService : NodeService,
+              private iconService: NzIconService,
+              private router: Router){
     this.iconService.addIcon(DeleteOutline);
     this.iconService.addIcon(EditOutline); 
   }
@@ -41,6 +48,54 @@ export class NodesTableComponent implements OnInit {
                     this.updateCurrentNodes();
                   });
   }
+
+  deleteNode(id: number): void {
+    swal.fire({
+      title: 'Are you sure?',
+      text: 'Once deleted, you will not be able to recover this node!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.onDeleteNode(id);
+      }
+    });
+  }
+
+  private onDeleteNode(id: number): void {
+    this.NodeService.deleteNode(id).pipe(
+      catchError((error: HttpErrorResponse) => {
+        let errorMessage = 'An unexpected error occurred';
+        
+        if (error.error?.message) {
+          errorMessage = error.error.message;
+        } else if (error.message) {
+          errorMessage = error.message;
+        }
+  
+        swal.fire('Error', errorMessage, 'error');
+        
+        return throwError(() => new Error(errorMessage));
+      })
+    ).subscribe(
+      (success: boolean) => {
+        if (success) {
+          swal.fire('Node Deleted', 'The node was successfully deleted!', 'success');
+        } else {
+          swal.fire('Error', 'Failed to delete node', 'error');
+        }
+        setTimeout(() => {
+          this.router.navigate(['/nodes']).then(() => {
+            window.location.reload();
+          });
+        }, 2000);
+      },
+    )
+  }
+
 
   updateCurrentNodes(): void {
     const startIndex = (this.currentPage - 1) * this.pageSize;

@@ -59,7 +59,7 @@ export class ModalFormComponent implements OnInit {
           this.router.navigate(['/nodes']).then(() => {
             window.location.reload();
           });
-        }, 4000);
+        }, 2000);
       }
     );
   }
