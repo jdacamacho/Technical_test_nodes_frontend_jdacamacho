@@ -1,1 +1,14 @@
-<p>modal-view works!</p>
+<button type="button" class="btn btn-primary" (click)='showModal(node)'>
+    <span nz-icon nzType="eye" nzTheme="outline"></span> 
+</button>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Node" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <ng-container *nzModalContent>
+        <nz-descriptions nzTitle="Information" nzLayout="vertical">
+            <nz-descriptions-item nzTitle="Name"> {{node.name}} </nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Value X">{{node.coordinate.valueX}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Value Y">{{node.coordinate.valueY}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Description">{{node.description}}</nz-descriptions-item>
+          </nz-descriptions>
+    </ng-container>
+</nz-modal>

@@ -39,9 +39,9 @@ export class NodeService {
     return this.http.get<Node>(this.urlEndPoint + '/' + id);
   }
 
-  deleteNode(id: number): Observable<Node>
+  deleteNode(id: number): Observable<boolean>
   {
-    return this.http.delete<Node>(this.urlEndPoint + '/' + id);
+    return this.http.delete<boolean>(this.urlEndPoint + '/' + id);
   }
 
 }

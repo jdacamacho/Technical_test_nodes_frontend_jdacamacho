@@ -2,7 +2,7 @@
   There are no nodes in database...
 </div>
 
-<table class="table table-light table-hover">
+<table class="table table-light table-hover" *ngIf="nodes.length>0">
     <thead>
         <tr>
           <th class="head-table" scope="col">Name</th>
@@ -14,11 +14,18 @@
     <tbody>
         <tr *ngFor="let node of currentNodes">
           <td> {{node.name}} </td>
-          <td> {{'( ' + node.coordinate.valueX + ' , ' + node.coordinate.valueY + ' )'}} </td>
-          <td> <span nz-icon nzType="eye" nzTheme="outline"></span> </td>
+          <td> {{'X= ' + node.coordinate.valueX + ', Y= ' + node.coordinate.valueY}} </td>
+          <td> 
+            <app-modal-view [node] = "node"></app-modal-view>
+          </td>
           <td>
-            <span nz-icon nzType="edit" nzTheme="outline"></span> | 
-            <span nz-icon nzType="delete" nzTheme="outline"></span>
+            <button type="button" class="btn btn-warning">
+              <span nz-icon nzType="edit" nzTheme="outline"></span> 
+            </button>
+            <button type="button" class="btn btn-danger">
+              <span nz-icon nzType="delete" nzTheme="outline"></span>
+            </button>
+            
           </td>
         </tr>
       </tbody>
@@ -30,4 +37,4 @@
   [nzPageSize]="pageSize"
   nzShowQuickJumper
   (nzPageIndexChange)="onPageChange($event)"
-></nz-pagination>
+*ngIf="nodes.length>0" ></nz-pagination>
