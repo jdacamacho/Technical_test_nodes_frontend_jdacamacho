@@ -1,0 +1,48 @@
+<button type="button" class="btn btn-outline-primary" (click)="showModal()">
+    <span nz-icon nzType="plus" nzTheme="outline"></span>
+    Add Node
+</button>
+<hr>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Please, enter the node information" (nzOnCancel)="handleCancel()" [nzFooter]="null">
+    <ng-container *nzModalContent>
+
+        <form>
+            <div class="form-group row">
+                <label for="name" class="col-form-label col-12"> Name: </label>
+                
+                <div class="col-12">
+                    <input type="text" class="form-control" [(ngModel)]="node.name"  name="name">
+                </div>
+
+                <label for="valueX" class="col-form-label col-12"> Coordinate X: </label>
+                
+                <div class="col-12">
+                    <input type="number" class="form-control" [(ngModel)]="node.coordinate.valueX" name="valueX">
+                </div>
+
+                <label for="valueY" class="col-form-label col-12"> Coordinate Y: </label>
+                
+                <div class="col-12">
+                    <input type="number" class="form-control" [(ngModel)]="node.coordinate.valueY" name="valueY">
+                </div>
+                
+                <label for="description" class="col-form-label col-12"> Description: </label>
+    
+                <div class="form-floating col-12">
+                    <textarea class="form-control" id="description" [(ngModel)]="node.description" name="description" placeholder="Enter description here"></textarea>
+                    <label for="description"></label>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div class="col-12 d-flex justify-content-center">
+                    <button class="btn btn-primary w-100" role="button" (click)='createNode()'> 
+                        create node
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </ng-container>
+</nz-modal>
