@@ -11,12 +11,13 @@ import swal from 'sweetalert2';
 import { catchError, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ModalUpdateComponent } from '../modals/modal-update/modal-update.component';
 
 @Component({
   selector: 'app-nodes-table',
   standalone: true,
   imports: [CommonModule, NzIconModule,NzPaginationModule,
-            ModalViewComponent],
+            ModalViewComponent, ModalUpdateComponent],
   templateUrl: './nodes-table.component.html',
   styleUrl: './nodes-table.component.css'
 })

@@ -19,13 +19,11 @@
             <app-modal-view [node] = "node"></app-modal-view>
           </td>
           <td>
-            <button type="button" class="btn btn-warning">
-              <span nz-icon nzType="edit" nzTheme="outline"></span> 
-            </button>
+            <app-modal-update [node] = "node" ></app-modal-update>
+
             <button type="button" class="btn btn-danger" (click)="deleteNode(node.id)">
               <span nz-icon nzType="delete" nzTheme="outline"></span>
             </button>
-            
           </td>
         </tr>
       </tbody>

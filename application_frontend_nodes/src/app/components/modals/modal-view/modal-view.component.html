@@ -5,6 +5,7 @@
 <nz-modal [(nzVisible)]="isVisible" nzTitle="Node" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
     <ng-container *nzModalContent>
         <nz-descriptions nzTitle="Information" nzLayout="vertical">
+            <nz-descriptions-item nzTitle="Id"> {{node.id}} </nz-descriptions-item>
             <nz-descriptions-item nzTitle="Name"> {{node.name}} </nz-descriptions-item>
             <nz-descriptions-item nzTitle="Value X">{{node.coordinate.valueX}}</nz-descriptions-item>
             <nz-descriptions-item nzTitle="Value Y">{{node.coordinate.valueY}}</nz-descriptions-item>
