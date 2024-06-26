@@ -1,3 +1,10 @@
+<nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+  <input type="text" nz-input placeholder="input search node name" [(ngModel)]="searchValue" (ngModelChange)="loadNodesName($event)" />
+</nz-input-group>
+<ng-template #suffixIconButton>
+  <button nz-button nzType="primary" nzSearch><span nz-icon nzType="search"></span></button>
+</ng-template>
+
 <div *ngIf="nodes?.length==0" class="alert alert-info">
   There are no nodes in database...
 </div>

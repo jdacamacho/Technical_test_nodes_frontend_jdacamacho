@@ -4,7 +4,7 @@ import { NodeService } from '../../data/services/node.service';
 import { Node } from '../../data/models/node';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzIconService } from 'ng-zorro-antd/icon';
-import { DeleteOutline, EditOutline } from '@ant-design/icons-angular/icons';
+import { DeleteOutline, EditOutline, SearchOutline } from '@ant-design/icons-angular/icons';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { ModalViewComponent } from '../modals/modal-view/modal-view.component';
 import swal from 'sweetalert2';
@@ -12,12 +12,16 @@ import { catchError, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ModalUpdateComponent } from '../modals/modal-update/modal-update.component';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { FormsModule } from '@angular/forms';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @Component({
   selector: 'app-nodes-table',
   standalone: true,
   imports: [CommonModule, NzIconModule,NzPaginationModule,
-            ModalViewComponent, ModalUpdateComponent],
+            ModalViewComponent, ModalUpdateComponent,NzInputModule,
+          FormsModule, NzButtonModule],
   templateUrl: './nodes-table.component.html',
   styleUrl: './nodes-table.component.css'
 })
@@ -25,6 +29,7 @@ export class NodesTableComponent implements OnInit {
   
   nodes: Node[] = [];
   currentNodes: Node[] = [];
+  searchValue: string = '';
   currentPage = 1;
   pageSize = 5;
   totalItems = 0;
@@ -34,10 +39,21 @@ export class NodesTableComponent implements OnInit {
               private router: Router){
     this.iconService.addIcon(DeleteOutline);
     this.iconService.addIcon(EditOutline); 
+    this.iconService.addIcon(SearchOutline);
   }
   
   ngOnInit(): void {
     this.loadNodes();
+  }
+
+  loadNodesName(value: string): void {
+    this.NodeService.listNodesByName(value).subscribe(
+      (nodes: Node[]) => {
+        this.nodes = nodes;
+        this.totalItems = this.nodes.length;
+        this.currentPage = 1;
+        this.updateCurrentNodes();
+      });
   }
 
   loadNodes(){
@@ -96,7 +112,6 @@ export class NodesTableComponent implements OnInit {
       },
     )
   }
-
 
   updateCurrentNodes(): void {
     const startIndex = (this.currentPage - 1) * this.pageSize;
