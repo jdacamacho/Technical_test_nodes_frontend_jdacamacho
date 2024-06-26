@@ -10,17 +10,17 @@
 
         <nz-card-tab>
             <nz-tabset nzSize="large" [(nzSelectedIndex)]="indexTab">
-            <nz-tab nzTitle="Management" class="title-tab"></nz-tab>
             <nz-tab nzTitle="Map" class="title-tab"></nz-tab>
+            <nz-tab nzTitle="Management" class="title-tab"></nz-tab>
             </nz-tabset>
         </nz-card-tab>
 
         <div *ngIf="indexTab === 0">
-            <app-nodes-table></app-nodes-table>
+            <app-nodes-map></app-nodes-map>
         </div>
     
         <div *ngIf="indexTab === 1">
-            adios
+            <app-nodes-table></app-nodes-table>
         </div>
     </nz-card>
     

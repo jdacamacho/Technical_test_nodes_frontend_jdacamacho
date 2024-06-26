@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { NodesTableComponent } from '../../nodes-table/nodes-table.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { ModalFormComponent } from '../../modals/modal-form/modal-form.component';
+import { NodesMapComponent } from '../../nodes-map/nodes-map.component';
 
 
 @Component({
@@ -15,7 +16,8 @@ import { ModalFormComponent } from '../../modals/modal-form/modal-form.component
   standalone: true,
   imports: [HeaderComponent, BreadCrumbComponent, FooterComponent,
             NzTabsModule, NzCardModule,CommonModule,
-            NodesTableComponent, NzIconModule, ModalFormComponent],
+            NodesTableComponent, NzIconModule, ModalFormComponent,
+            NodesMapComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css'
 })
