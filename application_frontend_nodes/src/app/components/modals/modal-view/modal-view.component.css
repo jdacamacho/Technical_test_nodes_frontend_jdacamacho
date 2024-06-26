@@ -1,0 +1,12 @@
+.node-info {
+    padding: 10px;
+}
+
+.node-info p {
+    margin-bottom: 10px;
+}
+
+.node-info b {
+    margin-right: 5px;
+    font-weight: bold;
+}

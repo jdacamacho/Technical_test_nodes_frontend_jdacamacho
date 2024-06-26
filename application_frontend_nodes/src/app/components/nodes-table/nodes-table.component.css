@@ -1,6 +1,11 @@
 .head-table{
     font-size: 15px; 
-    font-weight: 600;
+    font-weight: 500;
     color: #1b263b;
+}
+
+.td-custom{
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
 }
 

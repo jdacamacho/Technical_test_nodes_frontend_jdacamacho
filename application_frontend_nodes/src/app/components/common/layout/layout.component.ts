@@ -6,7 +6,7 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { CommonModule } from '@angular/common';
 import { NodesTableComponent } from '../../nodes-table/nodes-table.component';
-import { NzIconModule, NzIconService } from 'ng-zorro-antd/icon';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { ModalFormComponent } from '../../modals/modal-form/modal-form.component';
 
 
@@ -20,9 +20,6 @@ import { ModalFormComponent } from '../../modals/modal-form/modal-form.component
   styleUrl: './layout.component.css'
 })
 export class LayoutComponent {
-
   indexTab = 0;
-
   
-
 }

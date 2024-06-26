@@ -20,8 +20,8 @@
     </thead>
     <tbody>
         <tr *ngFor="let node of currentNodes">
-          <td> {{node.name}} </td>
-          <td> {{'X= ' + node.coordinate.valueX + ', Y= ' + node.coordinate.valueY}} </td>
+          <td class="td-custom"> {{node.name}} </td>
+          <td class="td-custom"> {{'(' + node.coordinate.valueX + ' , ' + node.coordinate.valueY + ')'}} </td>
           <td> 
             <app-modal-view [node] = "node"></app-modal-view>
           </td>

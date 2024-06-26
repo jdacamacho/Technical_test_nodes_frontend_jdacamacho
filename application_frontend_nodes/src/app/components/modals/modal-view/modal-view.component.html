@@ -3,13 +3,22 @@
 </button>
 
 <nz-modal [(nzVisible)]="isVisible" nzTitle="Node" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    
     <ng-container *nzModalContent>
-        <nz-descriptions nzTitle="Information" nzLayout="vertical">
-            <nz-descriptions-item nzTitle="Id"> {{node.id}} </nz-descriptions-item>
-            <nz-descriptions-item nzTitle="Name"> {{node.name}} </nz-descriptions-item>
-            <nz-descriptions-item nzTitle="Value X">{{node.coordinate.valueX}}</nz-descriptions-item>
-            <nz-descriptions-item nzTitle="Value Y">{{node.coordinate.valueY}}</nz-descriptions-item>
-            <nz-descriptions-item nzTitle="Description">{{node.description}}</nz-descriptions-item>
-          </nz-descriptions>
+        <div class="node-info">
+            <h5 class="mb-3">Information about the Node</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><b>Id node:</b> {{node.id}}</p>
+                    <p><b>Name:</b> {{node.name}}</p>
+                    <p><b>Description:</b> {{node.description}}</p>
+                </div>
+                <div class="col-md-6">
+                    <p><b>Id coordinate:</b> {{node.coordinate.id}}</p>
+                    <p><b>Value X:</b> {{node.coordinate.valueX}}</p>
+                    <p><b>Value Y:</b> {{node.coordinate.valueY}}</p>
+                </div>
+            </div>
+        </div>
     </ng-container>
 </nz-modal>
