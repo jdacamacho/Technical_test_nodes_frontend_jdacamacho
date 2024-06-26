@@ -15,7 +15,6 @@ export class NodesMapComponent implements OnInit{
 
   nodes: Node [] =  [];
   markers: any = [];
-
   center_Init = {
     lat: 2.43823 ,
     lng: -76.61316 
@@ -24,16 +23,15 @@ export class NodesMapComponent implements OnInit{
   constructor(private nodeService : NodeService){}
 
   ngOnInit(): void {
-    this.loadMarkers();
+    this.loadNodes();
   }
 
   loadMarkers() : void {
-    this.loadNodes();
-
     this.markers = this.nodes.map(node => ({
       position: { lat: node.coordinate.valueX, lng: node.coordinate.valueY },
-      label: { color: 'blue', text: node.name },
+      label: { color: 'black', text: node.name },
       title: node.name,
+      description: node.description,
     }));
 
   }
@@ -42,6 +40,7 @@ export class NodesMapComponent implements OnInit{
     this.nodeService.listNodes().subscribe(
       (nodes: Node[]) => {
         this.nodes = nodes;
+        this.loadMarkers();
       });
   }
 
