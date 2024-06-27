@@ -24,20 +24,24 @@
                 <label for="valueX" class="col-form-label col-12"> Coordinate X: </label>
 
                 <div class="col-12">
-                    <input type="number" class="form-control" [(ngModel)]="node.coordinate.valueX" name="valueX" required #valueX="ngModel"
+                    <input type="number" class="form-control" [(ngModel)]="node.coordinate.valueX" name="valueX" required min="-84.0" max="84.0"  #valueX="ngModel"
                         [ngClass]="{'is-invalid': valueX.invalid && (valueX.dirty || valueX.touched)}">
                     <div *ngIf="valueX.invalid && (valueX.dirty || valueX.touched)" class="invalid-feedback">
                         <div *ngIf="valueX.errors?.['required']">Coordinate X is required.</div>
+                        <div *ngIf="valueX.errors?.['min']">Value X must be greater than or equal to -84.0</div>
+                        <div *ngIf="valueX.errors?.['max']">Value X must be less than or equal to 84.0</div>
                     </div>
                 </div>
 
                 <label for="valueY" class="col-form-label col-12"> Coordinate Y: </label>
 
                 <div class="col-12">
-                    <input type="number" class="form-control" [(ngModel)]="node.coordinate.valueY" name="valueY" required #valueY="ngModel"
+                    <input type="number" class="form-control" [(ngModel)]="node.coordinate.valueY" name="valueY" required  min="-179.0" max="179.0" #valueY="ngModel"
                         [ngClass]="{'is-invalid': valueY.invalid && (valueY.dirty || valueY.touched)}">
                     <div *ngIf="valueY.invalid && (valueY.dirty || valueY.touched)" class="invalid-feedback">
                         <div *ngIf="valueY.errors?.['required']">Coordinate Y is required.</div>
+                        <div *ngIf="valueY.errors?.['min']">Value Y must be greater than or equal to -179.0</div>
+                        <div *ngIf="valueY.errors?.['max']">Value Y must be less than or equal to 179.0</div>
                     </div>
                 </div>
 
