@@ -7,7 +7,14 @@
         *ngFor="let marker of markers"
         [position]="marker.position"
         [label]="marker.label"
-        [title]="marker.title">
-        
-  </map-marker>
+        [title]="marker.title"
+        (mapClick)="openInfoWindow(marker, markerRef)"
+        #markerRef="mapMarker">
+    </map-marker>
+    <map-info-window>
+      <div>{{ selectedMarkerName }}</div>
+        <b>Description:</b>
+        <hr>
+        <div>{{ selectedMarkerInfo }}</div>
+    </map-info-window>
 </google-map>
