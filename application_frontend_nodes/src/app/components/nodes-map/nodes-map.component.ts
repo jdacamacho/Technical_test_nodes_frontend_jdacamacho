@@ -15,6 +15,7 @@ export class NodesMapComponent implements OnInit{
 
   nodes: Node [] =  [];
   markers: any = [];
+  
   center_Init = {
     lat: 2.43823 ,
     lng: -76.61316 

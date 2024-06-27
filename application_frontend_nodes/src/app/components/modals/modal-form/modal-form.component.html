@@ -21,7 +21,7 @@
                       </div>
                 </div>
                 
-                <label for="valueX" class="col-form-label col-12"> Coordinate X: </label>
+                <label for="valueX" class="col-form-label col-12"> Coordinate X (Latitude) : </label>
 
                 <div class="col-12">
                     <input type="number" class="form-control" [(ngModel)]="node.coordinate.valueX" name="valueX" required min="-84.0" max="84.0"  #valueX="ngModel"
@@ -33,7 +33,7 @@
                     </div>
                 </div>
 
-                <label for="valueY" class="col-form-label col-12"> Coordinate Y: </label>
+                <label for="valueY" class="col-form-label col-12"> Coordinate Y (Longitude) : </label>
 
                 <div class="col-12">
                     <input type="number" class="form-control" [(ngModel)]="node.coordinate.valueY" name="valueY" required  min="-179.0" max="179.0" #valueY="ngModel"
