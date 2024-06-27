@@ -32,7 +32,7 @@ export class NodesMapComponent implements OnInit{
       position: { lat: node.coordinate.valueX, lng: node.coordinate.valueY },
       label: { color: 'black', text: node.name },
       title: node.name,
-      description: node.description,
+      
     }));
 
   }
